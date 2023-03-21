@@ -37,7 +37,7 @@ optimizer = optim.Adam(generator.parameters(), lr=0.001)
 def distance_loss(d1, d2, alpha):
     distance = torch.norm(d1 - d2, dim=1)
     similarity = torch.cosine_similarity(d1, d2, dim=1)
-    loss = distance - alpha * similarity
+    loss = distance + alpha * similarity
     return loss.mean()
 
 # 训练对抗扰动生成器
